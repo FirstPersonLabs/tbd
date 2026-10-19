@@ -5,7 +5,7 @@
   "containers": [
     {
       "name": "tbd",
-      "image": "tbd6f3a8c19d2.azurecr.io/tbd@sha256:0b4e8586803e1b81f2a2f915d7473efd8a5d2a3eee6b087f69853b90681fff1f",
+      "image": "tbd6f3a8c19d2.azurecr.io/tbd@sha256:89befa591876308ed8ab3d97215dc5a1dc6eaf1431944e26c58456eff801bbad",
       "cvm_admin": true,
       "secrets": [
         "BOOTSTRAP_JSON"
