@@ -49,8 +49,10 @@
     "upstream": {
       "egress": "allowlist",
       "allow": [
-        "inference.tinfoil.sh",
-        "just-kiwi-9861.clerk.accounts.dev"
+        "allowed-sheep-1533.clerk.accounts.dev",
+        "api.clerk.com",
+        "api.linqapp.com",
+        "inference.tinfoil.sh"
       ]
     }
   }
