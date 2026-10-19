@@ -1,0 +1,57 @@
+{
+  "cvm-version": "0.14.10",
+  "cpus": 4,
+  "memory": 16384,
+  "containers": [
+    {
+      "name": "tbd",
+      "image": "tbd6f3a8c19d2.azurecr.io/tbd@sha256:164d29ac20b6af276c5816042900ffeca6a4e68dff8e68ed1499903cc1171c0f",
+      "cvm_admin": true,
+      "secrets": [
+        "BOOTSTRAP_JSON"
+      ],
+      "tmpfs": {
+        "/run": "size=512m,mode=755",
+        "/tmp": "size=512m,mode=1777",
+        "/state": "size=4g,mode=755"
+      },
+      "healthcheck": {
+        "test": [
+          "CMD",
+          "/usr/local/bin/healthcheck"
+        ],
+        "interval": "15s",
+        "timeout": "5s",
+        "start_period": "120s",
+        "retries": 4
+      },
+      "restart": "unless-stopped",
+      "stop_signal": "SIGRTMIN+3",
+      "stop_timeout": 60,
+      "networks": [
+        "upstream"
+      ],
+      "env": [
+        {
+          "EPHEMERAL": "1"
+        }
+      ]
+    }
+  ],
+  "shim": {
+    "upstream-port": 8080,
+    "upstream-container": "tbd",
+    "paths": [
+      "/*"
+    ]
+  },
+  "networks": {
+    "upstream": {
+      "egress": "allowlist",
+      "allow": [
+        "inference.tinfoil.sh",
+        "just-kiwi-9861.clerk.accounts.dev"
+      ]
+    }
+  }
+}
